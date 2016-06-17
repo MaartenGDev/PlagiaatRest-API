@@ -1,0 +1,21 @@
+{
+    "name": "maarten/fast.dev",
+    "description": "Fast Request to Response Micro Framework",
+    "require": {
+        "symfony/http-kernel": "^3.1",
+        "symfony/routing": "^3.1",
+        "illuminate/container": "^5.2"
+    },
+    "authors": [
+        {
+            "name": "MaartenGDev"
+        }
+    ],
+    "autoload": {
+        "files": ["app/Core/Helpers/helpers.php"],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "minimum-stability": "stable"
+}
