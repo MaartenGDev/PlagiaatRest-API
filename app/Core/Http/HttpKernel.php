@@ -21,14 +21,7 @@ class HttpKernel
         return call_user_func_array($controller,$arguments->all());
     }
     public function getRoutes(){
-        $routes = new RouteCollection();
-
-        $hello = new Route('/hello/{name}', array(
-                '_controller' => 'HomeController@index'
-            )
-        );
-
-        $routes->add('hello', $hello);
+        $routes = require_once __DIR__ .'/../../Http/routes.php';
 
         return $routes;
     }

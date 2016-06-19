@@ -18,6 +18,12 @@ require_once __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 
+// Exception handler:
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
+
+
 /*
 |---------------------------------------------
 | Run The Application
@@ -26,11 +32,15 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 | Run the application using the Kernel class.
 |
 */
+
+
 $kernel = $app->make(Kernel::class);
 
 $response = $kernel->handle(
     $request = Request::createFromGlobals()
 );
+
+
 $response->send();
 
 $kernel->terminate($request, $response);

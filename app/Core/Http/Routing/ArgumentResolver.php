@@ -29,7 +29,13 @@ class ArgumentResolver
         $parameters = $reflection->getMethod($method)->getParameters();
 
        foreach($parameters as $parameter){
-            $arguments[$parameter->name] = $this->request->request->get($parameter->name);
+           $value = $this->request->request->get($parameter->name);
+
+           if(!is_null($parameter->getClass()) && $parameter->getClass()->getName() == Request::class){
+                $value = $this->request;
+           }
+
+           $arguments[$parameter->name] = $value;
         }
         return $arguments;
     }
