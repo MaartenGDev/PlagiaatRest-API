@@ -1,9 +1,9 @@
 <?php
 
 
-namespace App\Core\Support;
+namespace App\Http\Support;
 
-
+use App\Core\Support\Facade;
 use App\Services\OneDriveService;
 
 class OneDrive extends Facade

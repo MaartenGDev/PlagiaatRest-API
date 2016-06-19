@@ -11,7 +11,11 @@ class HttpRequest
     public function __construct()
     {
         $this->handle = curl_init();
+        $this->setDefaults();
+    }
+    public function setDefaults(){
         $this->addOption(CURLOPT_RETURNTRANSFER,true);
+        $this->addOption(CURLOPT_FOLLOWLOCATION,true);
     }
     public function setUri($uri){
         curl_setopt($this->handle,CURLOPT_URL,$uri);

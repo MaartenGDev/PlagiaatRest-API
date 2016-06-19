@@ -4,8 +4,8 @@ use Symfony\Component\Routing\RouteCollection;
 
 $routes = new RouteCollection();
 
-$routes->add('folder', new Route('/folder/{folder}', array(
-        '_controller' => 'OneDriveController@folder'
+$routes->add('folder', new Route('/file/{file}/content/{content}', array(
+        '_controller' => 'OneDriveController@file'
     )
 ));
 

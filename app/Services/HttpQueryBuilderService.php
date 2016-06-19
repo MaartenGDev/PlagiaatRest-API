@@ -5,7 +5,7 @@ namespace App\Services;
 
 use App\Core\Http\Helpers\HttpRequest;
 
-class HttpQueryBuilder
+class HttpQueryBuilderService
 {
     private $request;
     private $uri;

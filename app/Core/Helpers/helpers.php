@@ -6,3 +6,11 @@ if(!function_exists('contains')){
     }
 
 }
+
+if(!function_exists('home')){
+
+    function home(){
+        return __DIR__ . '/../../../';
+    }
+
+}

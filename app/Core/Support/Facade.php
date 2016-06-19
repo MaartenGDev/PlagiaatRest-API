@@ -18,4 +18,6 @@ abstract class Facade
 
         return new $class;
     }
+
+    abstract static function getFacadeAccessor();
 }
