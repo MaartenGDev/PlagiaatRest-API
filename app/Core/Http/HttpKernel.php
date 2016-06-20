@@ -6,8 +6,6 @@ namespace App\Core\Http;
 use App\Core\Http\Routing\ArgumentResolver;
 use App\Core\Http\Routing\ControllerResolver;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Routing\Route;
-use Symfony\Component\Routing\RouteCollection;
 
 class HttpKernel
 {
