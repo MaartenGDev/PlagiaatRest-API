@@ -4,6 +4,8 @@
 namespace App\Core\Http\Helpers;
 
 
+use Illuminate\Contracts\Validation\UnauthorizedException;
+
 class HttpRequest
 {
     private $handle;
@@ -37,14 +39,15 @@ class HttpRequest
     }
 
     public function send(){
+
+        if(curl_errno($this->handle) !== 0){
+            throw new UnauthorizedException('OneDrive returned an error',401);
+        }
+
         return curl_exec($this->handle);
     }
 
 
-    public function __destruct() {
-        if ($this->handle) {
-            curl_close($this->handle);
-        }
-    }
+
 
 }

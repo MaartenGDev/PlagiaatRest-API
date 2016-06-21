@@ -1,6 +1,8 @@
 <?php
 use App\Http\Kernel;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Whoops\Handler\JsonResponseHandler;
 
 /*
 |--------------------------------------------------|
@@ -18,12 +20,6 @@ require_once __DIR__.'/../vendor/autoload.php';
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 
-// Exception handler:
-$whoops = new \Whoops\Run;
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
-$whoops->register();
-
-
 /*
 |---------------------------------------------
 | Run The Application
@@ -34,15 +30,13 @@ $whoops->register();
 */
 
 
-$kernel = $app->make(Kernel::class);
+$kernel = new Kernel();
+
+$kernel->registerErrorHandler();
 
 $response = $kernel->handle(
     $request = Request::createFromGlobals()
 );
-
-
-
-
 
 $response->send();
 

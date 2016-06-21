@@ -4,9 +4,19 @@ use Symfony\Component\Routing\RouteCollection;
 
 $routes = new RouteCollection();
 
-$routes->add('folder', new Route('/file/{file}/content/{content}', array(
-        '_controller' => 'OneDriveController@file'
-    )
+$options = new Route('/file/{file}/percentage', array(
+    '_controller' => 'OneDriveController@options'
 ));
+
+$options->setMethods('OPTIONS');
+
+$file = new Route('/file/{file}/percentage', array(
+    '_controller' => 'OneDriveController@file'
+));
+
+$file->setMethods(['GET','POST']);
+
+$routes->add('options', $options);
+$routes->add('folder', $file);
 
 return $routes;

@@ -14,7 +14,7 @@ class CompareFileService
 
     public function compare($oneDriveFile,$document){
         $this->document = explode(' ', urldecode($document));
-        $this->oneDrive = explode(' ', $oneDriveFile);
+        $this->oneDrive = explode(' ', strip_tags($oneDriveFile));
 
         $this->percentage = $this->getSection()
             ->removeCommonWords()
@@ -23,7 +23,7 @@ class CompareFileService
 
         return json_encode([
             'words' => $this->copiedWords,
-           'percentage' =>  $this->percentage
+            'percentage' =>  $this->percentage
         ]);
     }
 
@@ -31,12 +31,14 @@ class CompareFileService
         $oneDriveFile = implode(' ',$this->oneDrive);
 
         $firstSentence = implode(' ',array_slice($this->document,0,3));
-        $lastSentence = implode(' ', array_slice($this->oneDrive,-3,3));
+        $lastSentence = implode(' ', array_slice($this->document,-3,3));
 
         $startPos = strpos($oneDriveFile,$firstSentence);
         $endPos = strpos($oneDriveFile,$lastSentence);
 
+
         $oneDriveFile = substr($oneDriveFile,$startPos,$endPos-$startPos + strlen($lastSentence));
+
 
         $this->oneDrive = explode(' ', $oneDriveFile);
 

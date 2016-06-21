@@ -28,7 +28,7 @@ class ControllerResolver
             }
         }
         if(!$controller){
-            throw new NotFoundHttpException();
+            throw new NotFoundHttpException('Page Not Found',null,404);
         }
         // Set correct namespace
         $controller[0] = $this->namespace . $controller[0];
@@ -53,7 +53,7 @@ class ControllerResolver
             return $route;
         },$routeParts,$requestParts);
 
-        return implode('/',$routeParts) == implode('/',$requestParts);
+        return in_array($request->getMethod(),$route->getMethods()) && implode('/',$routeParts) == implode('/',$requestParts);
     }
 
 

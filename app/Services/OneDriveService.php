@@ -20,7 +20,7 @@ class OneDriveService
     public function sendAuthRequest($token,$path){
 
         if(is_null($token)){
-            throw new AccessDeniedHttpException('Invalid Token');
+            throw new AccessDeniedHttpException('Invalid Token',null,401);
         }
         
         $this->client->setUri($this->api . $path);
