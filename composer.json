@@ -5,7 +5,10 @@
         "symfony/http-kernel": "^3.1",
         "symfony/routing": "^3.1",
         "illuminate/container": "^5.2",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "monolog/monolog": "^1.19",
+        "phpunit/phpunit": "^5.4",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "authors": [
         {
