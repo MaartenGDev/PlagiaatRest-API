@@ -38,6 +38,10 @@ $response = $kernel->handle(
     $request = Request::createFromGlobals()
 );
 
+
+// Set Header for Ajax clients.
+$response->headers->set('Access-Control-Allow-Origin','*');
+
 $response->send();
 
 $kernel->terminate($request, $response);

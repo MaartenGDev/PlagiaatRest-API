@@ -4,6 +4,10 @@
 namespace App\Services;
 
 
+use Monolog\Handler\StreamHandler;
+use Monolog\Logger;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+
 class CompareFileService
 {
     private $document;
@@ -13,6 +17,11 @@ class CompareFileService
     private $percentage = 0;
 
     public function compare($oneDriveFile,$document){
+
+        if(is_null($document) || is_null($oneDriveFile)){
+            throw new BadRequestHttpException('Missing Document or OneDrive File to compare with.',null,400);
+        }
+
         $this->document = explode(' ', urldecode($document));
         $this->oneDrive = explode(' ', strip_tags($oneDriveFile));
 
@@ -36,9 +45,7 @@ class CompareFileService
         $startPos = strpos($oneDriveFile,$firstSentence);
         $endPos = strpos($oneDriveFile,$lastSentence);
 
-
         $oneDriveFile = substr($oneDriveFile,$startPos,$endPos-$startPos + strlen($lastSentence));
-
 
         $this->oneDrive = explode(' ', $oneDriveFile);
 

@@ -1,13 +1,9 @@
 <?php
-
-
 namespace App\Services;
-
 
 class FileService
 {
     public function content($content){
-
         $temp = tempnam(home() .'storage/cache/','onedriveFile');
 
         file_put_contents($temp,$content);

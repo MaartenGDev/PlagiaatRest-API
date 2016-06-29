@@ -14,3 +14,15 @@ if(!function_exists('home')){
     }
 
 }
+if(!function_exists('path')){
+
+
+    function path($key){
+        $items = [
+          'logs' => 'storage/logs/'
+        ];
+
+        return home() . $items[$key];
+    }
+
+}

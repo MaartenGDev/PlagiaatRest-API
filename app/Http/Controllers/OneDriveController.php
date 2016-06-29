@@ -31,8 +31,15 @@ class OneDriveController
             )
         );
 
-        $response->headers->set('Access-Control-Allow-Origin','*');
-        $response->headers->set('Content-Type','application/json');
+        return $response;
+    }
+    public function files(Request $request){
+        $token = $request->headers->get('token');
+
+        $response = new Response(
+            OneDrive::files($token)
+        );
+
         return $response;
     }
 }

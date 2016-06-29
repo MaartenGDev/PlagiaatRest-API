@@ -28,13 +28,13 @@ class HttpKernel
     }
 
     public function registerErrorHandler(){
-        set_exception_handler(function(Exception $e){
-            $response = new Response(json_encode([
-                'message' => $e->getMessage()
-            ]),$e->getCode());
-            $response->headers->set('Content-Type','application/json');
-            $response->send();
-        });
+//        set_exception_handler(function(Exception $e){
+//            $response = new Response(json_encode([
+//                'message' => $e->getMessage(),
+//            ]),$e->getCode());
+//            $response->headers->set('Content-Type','application/json');
+//            $response->send();
+//        });
     }
     public function handle(Request $request){
        return $this->sendRequestThroughRouter($request);
